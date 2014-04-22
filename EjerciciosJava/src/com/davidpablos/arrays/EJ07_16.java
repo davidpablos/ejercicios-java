@@ -25,8 +25,7 @@ public class EJ07_16 {
 			if (number >= max){
 				max = number;
 			}
-			
-			i++;
+
 		}
 		
 		System.out.println("El m‡ximo del array es: "+ max);
