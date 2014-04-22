@@ -45,12 +45,9 @@ public class EJ07_17 {
 		int ultimo = array.length - 1;
 		
 		while (capicua && primero <= ultimo){
-			if (array[primero] != array[ultimo]){
+			if (array[primero++] != array[ultimo--]){
 				capicua = false;
 			}
-			
-			primero++;
-			ultimo--;
 		}
 		
 		if (capicua){

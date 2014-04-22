@@ -11,22 +11,27 @@ public class EJ06_15 {
 		// TODO Auto-generated method stub
 		
 		int x  = (int) (100*Math.random()+1);
-		int intentos = 0;
+		int intentos = 5;
 		int entradaUsuario;
 		boolean acierto = false;
 		
 		System.out.println(x);
 		
-		while (intentos < 5 && !acierto){
+		while (intentos > 0 && !acierto){
+			System.out.println("Te quedan "+ intentos +" intentos");
 			System.out.println("Introduzca un nœmero entero: ");
 			Scanner entrada = new Scanner(System.in);
 			entradaUsuario = entrada.nextInt();
 			
 			if (entradaUsuario == x){
 				acierto = true;
+			}else if (entradaUsuario > x){
+				System.out.println("El nœmero es menor");
 			}else{
-				intentos++;
+				System.out.println("El nœmero es mayor");
 			}
+			
+			intentos--;
 		}
 		
 		if (acierto){
