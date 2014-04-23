@@ -6,59 +6,65 @@ import java.util.Scanner;
 public class EJ07_18 {
 
 	/**
-	 * Construir un programa que pida al usuario dos vectores de números enteros v1 y v2,
-	 * y que construya un nuevo vector v que almacene la suma de ambos vectores.
-	 * El nuevo vector se ha de ajustar al vector más largo proporcionado por el usuario.
-	 * Finalmente, mostrar el resultado por pantalla.
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] v1, v2, v3;
+		// TODO Auto-generated method stub
 		
-		v1 = new int[15];
-		// Inicializar el array de números
-		for (int i = 0; i < v1.length; i++) {
-			v1[i] = (int) (10*Math.random()+1);
-		}
-
-		v2 = new int[7];
-		// Inicializar el array de números
-		for (int i = 0; i < v2.length; i++) {
-			v2[i] = (int) (10*Math.random()+1);
+		int posiciones, entradaUsuario;
+		int[] array1, array2, array3;
+		
+		System.out.print("Introduzca el número de posiciones que tiene el array 1: ");
+		
+		Scanner entrada = new Scanner(System.in);
+		posiciones = entrada.nextInt();
+		array1 = new int[posiciones];
+		
+		for (int i=0; i<array1.length; i++){
+			System.out.print("Introduzca el elemento "+ (i+1) +" del array: ");
+			entrada = new Scanner(System.in);
+			entradaUsuario = entrada.nextInt();
+			array1[i]  = entradaUsuario;
 		}
 		
-		if(v1.length > v2.length) {
-			v3 = new int[v1.length];
+		System.out.print("Introduzca el número de posiciones que tiene el array 2: ");
+		
+		entrada = new Scanner(System.in);
+		posiciones = entrada.nextInt();
+		array2 = new int[posiciones];
+		
+		for (int i=0; i<array2.length; i++){
+			System.out.print("Introduzca el elemento "+ (i+1) +" del array: ");
+			entrada = new Scanner(System.in);
+			entradaUsuario = entrada.nextInt();
+			array2[i]  = entradaUsuario;
+		}
+		
+		if(array1.length > array2.length) {
+			array3 = new int[array1.length];
 			// Sumar los dos arrays
-			for (int i = 0; i < v2.length; i++) {
-				v3[i] = v1[i] + v2[i];
+			for (int i = 0; i < array2.length; i++) {
+				array3[i] = array1[i] + array2[i];
 			}
 			
 			// Añadir los elementos restantes
-			for (int i = v2.length; i < v3.length; i++) {
-				v3[i] = v1[i];
+			for (int i = array2.length; i < array3.length; i++) {
+				array3[i] = array1[i];
 			}
 		} else {
-			v3 = new int[v2.length];
+			array3 = new int[array2.length];
 			// Sumar los dos arrays
-			for (int i = 0; i < v1.length; i++) {
-				v3[i] = v1[i] + v2[i];
+			for (int i = 0; i < array1.length; i++) {
+				array3[i] = array1[i] + array2[i];
 			}
 			
 			// Añadir los elementos restantes
-			for (int i = v1.length; i < v3.length; i++) {
-				v3[i] = v2[i];
+			for (int i = array1.length; i < array3.length; i++) {
+				array3[i] = array2[i];
 			}
 		}
 		
-		// Imprimir el array resultante
-		for (int i = 0; i < v3.length; i++) {
-			System.out.print(v3[i] + " ");
-		}
-		
-		// System.out.println(Arrays.toString(v3));
-
+		System.out.println("Array:" + Arrays.toString(array3));
 	}
 
 }
