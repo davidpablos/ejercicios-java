@@ -19,7 +19,7 @@ public class EJ4_03 {
 		
 		IMS = peso / Math.pow(altura, 2);
 		
-		//IMS = Math.round(IMS * 100) / 100;
+		IMS = Math.rint(IMS * 100) / 100;
 		
 		System.out.print("Su IMS es " + IMS +": ");
 		
