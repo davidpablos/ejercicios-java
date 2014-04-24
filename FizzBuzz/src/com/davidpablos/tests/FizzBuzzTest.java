@@ -5,15 +5,55 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.davidpablos.fizzbuzz.Buzz;
+import com.davidpablos.fizzbuzz.Fizz;
 import com.davidpablos.fizzbuzz.FizzBuzz;
 
 public class FizzBuzzTest {
 	
 	FizzBuzz fb;
+	Fizz f;
+	Buzz b;
 
 	@Before
 	public void setUp() throws Exception {
 		fb = new FizzBuzz();
+		f = new Fizz();
+		b = new Buzz();
+	}
+	
+	@Test
+	public void calcularMultiplo3() {
+		assertEquals("Fizz", "Fizz", f.devolverTexto());
+		
+		assertFalse(f.esMultiploDe3(1));
+		assertFalse(f.esMultiploDe3(2));
+		assertTrue(f.esMultiploDe3(3));
+		assertFalse(f.esMultiploDe3(4));
+		assertFalse(f.esMultiploDe3(5));
+		assertTrue(f.esMultiploDe3(6));
+		assertFalse(f.esMultiploDe3(7));
+		assertFalse(f.esMultiploDe3(8));
+		assertTrue(f.esMultiploDe3(9));
+		assertFalse(f.esMultiploDe3(10));
+		assertTrue(f.esMultiploDe3(15));
+	}
+	
+	@Test
+	public void calcularMultiplo5() {
+		assertEquals("Buzz", "Buzz", b.devolverTexto());
+		
+		assertFalse(b.esMultiploDe5(1));
+		assertFalse(b.esMultiploDe5(2));
+		assertFalse(b.esMultiploDe5(3));
+		assertFalse(b.esMultiploDe5(4));
+		assertTrue(b.esMultiploDe5(5));
+		assertFalse(b.esMultiploDe5(6));
+		assertFalse(b.esMultiploDe5(7));
+		assertFalse(b.esMultiploDe5(8));
+		assertFalse(b.esMultiploDe5(9));
+		assertTrue(b.esMultiploDe5(10));
+		assertTrue(b.esMultiploDe5(15));
 	}
 	
 	@Test

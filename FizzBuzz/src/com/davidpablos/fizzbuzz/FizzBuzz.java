@@ -1,18 +1,23 @@
 package com.davidpablos.fizzbuzz;
 
 public class FizzBuzz {
-
+	private String texto = "FizzBuzz";
+	Fizz f;
+	Buzz b;
+	
 	public FizzBuzz() {
+		f = new Fizz();
+		b = new Buzz();
 	}
 	
 	public String calcularFizzBuzzNumero(int num){
 		String result = "";
-		if (num % 3 == 0 && num % 5 == 0){
-			result = "FizzBuzz";
-		}else if (num % 3 == 0){
-			result = "Fizz";
-		}else if (num % 5 == 0){
-			result = "Buzz";
+		if (f.esMultiploDe3(num) && b.esMultiploDe5(num)){
+			result = texto;
+		}else if (f.esMultiploDe3(num)){
+			result = f.devolverTexto();
+		}else if (b.esMultiploDe5(num)){
+			result = b.devolverTexto();
 		}else{
 			result = String.valueOf(num);
 		}
