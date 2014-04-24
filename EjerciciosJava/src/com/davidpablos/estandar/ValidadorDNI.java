@@ -10,7 +10,7 @@ public class ValidadorDNI {
 	
 	public boolean validarDNI(){
 		boolean valido = false;
-		if (validarLongitud() && validarDigitos() && validarEsLetra()){
+		if (validarLongitud() && validarDigitos() && validarEsLetra() && letraDNIValida()){
 			valido = true;
 		}
 		
@@ -69,16 +69,16 @@ public class ValidadorDNI {
 		return result;
 	}
 	
-//	public boolean letraDNIValida() {
-//		boolean result = false;
-//		
-//		int modulo = getDigitos() % 23;
-//		
-//		if (modulo){
-//			
-//		}
-//		
-//		return String.valueOf(getDigitos()) + NIF_STRING_ASOCIATION.charAt(getDigitos() % 23);
-//	}
+	public boolean letraDNIValida() {
+		boolean result = true;
+		
+		int modulo = Integer.parseInt(getDigitos()) % 23;
+		
+		if (NIF_STRING_ASOCIATION.charAt(modulo) != this.nif.charAt(this.nif.length()-1)){
+			result = false;
+		}
+		
+		return result;
+	}
 	
 }
