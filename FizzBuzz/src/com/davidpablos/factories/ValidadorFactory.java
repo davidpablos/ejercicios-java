@@ -1,8 +1,8 @@
 package com.davidpablos.factories;
 
-import com.davidpablos.validadores.Buzz;
-import com.davidpablos.validadores.Fizz;
-import com.davidpablos.validadores.Mozz;
+import com.davidpablos.validator.Buzz;
+import com.davidpablos.validator.Fizz;
+import com.davidpablos.validator.Mozz;
 
 public abstract class ValidadorFactory {
 

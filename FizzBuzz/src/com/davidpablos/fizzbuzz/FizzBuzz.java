@@ -2,6 +2,7 @@ package com.davidpablos.fizzbuzz;
 
 import java.util.ArrayList;
 
+import com.davidpablos.exceptions.NumberNotValidException;
 import com.davidpablos.factories.ValidadorFactory;
 import com.davidpablos.interfaces.IValidador;
 
@@ -33,15 +34,19 @@ public class FizzBuzz {
 		String pal = "";
 		
 		for (IValidador validador : validadores){
-			if (validador.validar(num)){
-				pal += validador.getOutput();
+			try {
+				if (validador.validar(num)){
+					pal += validador.getOutput();
+				}
+			} catch (NumberNotValidException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		
 		if (pal.length() == 0){
 			pal += String.valueOf(num);
 		}
-		
 		
 		return pal;
 	}

@@ -5,9 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.davidpablos.fizzbuzz.FizzBuzz;
-import com.davidpablos.validadores.Buzz;
-import com.davidpablos.validadores.Fizz;
-import com.davidpablos.validadores.Mozz;
+import com.davidpablos.validator.Buzz;
+import com.davidpablos.validator.Fizz;
+import com.davidpablos.validator.Mozz;
 
 public class FizzBuzzTest {
 	
