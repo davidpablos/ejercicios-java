@@ -19,7 +19,7 @@ public class FizzBuzzTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		fb= new FizzBuzz();
+		fb = new FizzBuzz();
 		fizz = new Fizz();
 		buzz = new Buzz();
 		mozz = new Mozz();

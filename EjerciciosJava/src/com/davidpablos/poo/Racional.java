@@ -53,8 +53,8 @@ public class Racional {
 	
 	public Racional resta(Racional b){
 		Racional r = new Racional();
-		r.asignaNumerador(this.getNumerador() - b.getNumerador());
-		r.asignaDenominador(this.getDenominador() - b.getDenominador());
+		r.asignaNumerador(this.getNumerador() * b.getDenominador() - b.getNumerador() * this.getDenominador());
+		r.asignaDenominador(this.getDenominador() * b.getDenominador());
 		
 		return r;
 	}
