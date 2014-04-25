@@ -1,82 +1,103 @@
 package com.davidpablos.tests;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import com.davidpablos.fizzbuzz.Buzz;
-import com.davidpablos.fizzbuzz.Fizz;
 import com.davidpablos.fizzbuzz.FizzBuzz;
+import com.davidpablos.validadores.Buzz;
+import com.davidpablos.validadores.Fizz;
+import com.davidpablos.validadores.Mozz;
 
 public class FizzBuzzTest {
 	
 	FizzBuzz fb;
-	Fizz f;
-	Buzz b;
+	Fizz fizz;
+	Buzz buzz;
+	Mozz mozz;
 
 	@Before
 	public void setUp() throws Exception {
-		fb = new FizzBuzz();
-		f = new Fizz();
-		b = new Buzz();
-	}
-	
-	@Test
-	public void calcularMultiplo3() {
-		assertEquals("Fizz", "Fizz", f.devolverTexto());
 		
-		assertFalse(f.esMultiploDe3(1));
-		assertFalse(f.esMultiploDe3(2));
-		assertTrue(f.esMultiploDe3(3));
-		assertFalse(f.esMultiploDe3(4));
-		assertFalse(f.esMultiploDe3(5));
-		assertTrue(f.esMultiploDe3(6));
-		assertFalse(f.esMultiploDe3(7));
-		assertFalse(f.esMultiploDe3(8));
-		assertTrue(f.esMultiploDe3(9));
-		assertFalse(f.esMultiploDe3(10));
-		assertTrue(f.esMultiploDe3(15));
-	}
-	
-	@Test
-	public void calcularMultiplo5() {
-		assertEquals("Buzz", "Buzz", b.devolverTexto());
-		
-		assertFalse(b.esMultiploDe5(1));
-		assertFalse(b.esMultiploDe5(2));
-		assertFalse(b.esMultiploDe5(3));
-		assertFalse(b.esMultiploDe5(4));
-		assertTrue(b.esMultiploDe5(5));
-		assertFalse(b.esMultiploDe5(6));
-		assertFalse(b.esMultiploDe5(7));
-		assertFalse(b.esMultiploDe5(8));
-		assertFalse(b.esMultiploDe5(9));
-		assertTrue(b.esMultiploDe5(10));
-		assertTrue(b.esMultiploDe5(15));
-	}
-	
-	@Test
-	public void testCalcularNumero() {
-		assertEquals("FizzBuzz 1", "1", fb.calcularFizzBuzzNumero(1));
-		assertEquals("FizzBuzz 2", "2", fb.calcularFizzBuzzNumero(2));
-		assertEquals("FizzBuzz 3", "Fizz", fb.calcularFizzBuzzNumero(3));
-		assertEquals("FizzBuzz 4", "4", fb.calcularFizzBuzzNumero(4));
-		assertEquals("FizzBuzz 5", "Buzz", fb.calcularFizzBuzzNumero(5));
-		assertEquals("FizzBuzz 6", "Fizz", fb.calcularFizzBuzzNumero(6));
-		assertEquals("FizzBuzz 7", "7", fb.calcularFizzBuzzNumero(7));
-		assertEquals("FizzBuzz 8", "8", fb.calcularFizzBuzzNumero(8));
-		assertEquals("FizzBuzz 9", "Fizz", fb.calcularFizzBuzzNumero(9));
-		assertEquals("FizzBuzz 10", "Buzz", fb.calcularFizzBuzzNumero(10));
-		assertEquals("FizzBuzz 15", "FizzBuzz", fb.calcularFizzBuzzNumero(15));
+		fb= new FizzBuzz();
+		fizz = new Fizz();
+		buzz = new Buzz();
+		mozz = new Mozz();
 	}
 
+//	@Test
+//	public void testDivisores() {
+//		assertEquals("1",false,fb.divisor3(1));
+//		assertEquals("3",true,fb.divisor3(3));
+//		assertEquals("1",false,fb.divisor5(1));
+//		assertEquals("5",true,fb.divisor5(5));
+//		
+//	}
+	
+	@Test
+	public void testFizz() {
+		assertEquals("Fizz", "Fizz", fizz.getOutput());
+		
+		assertFalse("Fizz: 1", fizz.validar(1));
+		assertTrue("Fizz: 3", fizz.validar(3));
+		assertFalse("Fizz: 4", fizz.validar(4));
+		assertFalse("Fizz: 5", fizz.validar(5));
+		assertTrue("Fizz: 6", fizz.validar(6));
+		assertTrue("Fizz: 15", fizz.validar(15));
+		
+	}
+	
+	@Test
+	public void testBuzz() {
+		assertEquals("Buzz", "Buzz", buzz.getOutput());
+		
+		assertFalse("Buzz: 1", buzz.validar(1));
+		assertTrue("Buzz: 5", buzz.validar(5));
+		assertFalse("Buzz: 7", buzz.validar(7));
+		assertTrue("Buzz: 10", buzz.validar(10));
+		assertTrue("Buzz: 15", buzz.validar(15));
+	}
+	
+	@Test
+	public void testMozz() {
+		assertEquals("Mozz", "Mozz", mozz.getOutput());
+		
+		assertFalse("Mozz: 1", mozz.validar(1));
+		assertFalse("Mozz: 5", mozz.validar(5));
+		assertTrue("Mozz: 7", mozz.validar(7));
+		assertFalse("Mozz: 10", mozz.validar(10));
+		assertTrue("Mozz: 14", mozz.validar(14));
+	}
+	
+	@Test
+	public void testObtener() {
+		assertEquals("1","1",fb.obtenerTexto(1));
+		assertEquals("3","Fizz",fb.obtenerTexto(3));
+		assertEquals("5","Buzz",fb.obtenerTexto(5));
+		assertEquals("15","FizzBuzz",fb.obtenerTexto(15));
+		assertEquals("105","FizzBuzzMozz",fb.obtenerTexto(105));
+	}
+	
+	
 	@Test
 	public void testFizzBuzz() {
-		assertEquals("FizzBuzz 1", "1", fb.print(1));
-		assertEquals("FizzBuzz 3", "1 2 Fizz", fb.print(3));
-		assertEquals("FizzBuzz 5", "1 2 Fizz 4 Buzz", fb.print(5));
-		assertEquals("FizzBuzz 15", "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz", fb.print(15));
+		assertEquals("1","1",fb.calcular(1));
+		assertEquals("2","1 2",fb.calcular(2));
+		assertEquals("3","1 2 Fizz",fb.calcular(3));
+		assertEquals("4","1 2 Fizz 4",fb.calcular(4));
+		assertEquals("5","1 2 Fizz 4 Buzz",fb.calcular(5));
+		assertEquals("6","1 2 Fizz 4 Buzz Fizz",fb.calcular(6));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz",fb.calcular(7));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8",fb.calcular(8));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz",fb.calcular(9));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz",fb.calcular(10));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11",fb.calcular(11));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11 Fizz",fb.calcular(12));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11 Fizz 13",fb.calcular(13));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11 Fizz 13 Mozz",fb.calcular(14));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11 Fizz 13 Mozz FizzBuzz",fb.calcular(15));
+		assertEquals("7","1 2 Fizz 4 Buzz Fizz Mozz 8 Fizz Buzz 11 Fizz 13 Mozz FizzBuzz 16",fb.calcular(16));
+		
 	}
 
 }

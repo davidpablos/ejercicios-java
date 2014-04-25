@@ -1,13 +1,19 @@
 package com.davidpablos.validadores;
 
-import com.davidpablos.interfaces.IValidacion;
+import com.davidpablos.interfaces.IValidador;
 
-public abstract class Validador implements IValidacion{
-	private String texto;
-
-	public abstract boolean esMultiplo(int num);
+public abstract class Validador implements IValidador{
 	
-	public String devolverTexto(){
-		return this.texto;
+	private String output;
+	
+	public Validador(String msg){
+		this.output = msg;
 	}
+	
+	public abstract boolean validar(int num);
+	
+	public String getOutput(){
+		return output;
+	}
+
 }

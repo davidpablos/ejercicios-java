@@ -1,47 +1,49 @@
 package com.davidpablos.fizzbuzz;
 
+import java.util.ArrayList;
+
+import com.davidpablos.factories.ValidadorFactory;
+import com.davidpablos.interfaces.IValidador;
+
 public class FizzBuzz {
-	private String texto = "FizzBuzz";
-	Fizz f;
-	Buzz b;
+	private ArrayList<IValidador> validadores;
 	
 	public FizzBuzz() {
-		f = new Fizz();
-		b = new Buzz();
+		validadores = new ArrayList<IValidador>();
+		validadores.add(ValidadorFactory.getFizzValidador());
+		validadores.add(ValidadorFactory.getBuzzValidador());
+		validadores.add(ValidadorFactory.getMozzValidador());
 	}
 	
-	public String calcularFizzBuzzNumero(int num){
-		String result = "";
-		if (f.esMultiploDe3(num) && b.esMultiploDe5(num)){
-			result = texto;
-		}else if (f.esMultiploDe3(num)){
-			result = f.devolverTexto();
-		}else if (b.esMultiploDe5(num)){
-			result = b.devolverTexto();
-		}else{
-			result = String.valueOf(num);
-		}
+	public String calcular(int num) {
+		String res="";
 		
-		return result;
-	}
-	
-	public String print(int num){
-		String result = "";
-		for (int i=1; i<=num; i++){
-			if (i == 1){
-				result = calcularFizzBuzzNumero(i);
-			}else{
-				result += " " + calcularFizzBuzzNumero(i);
+		for(int i=1; i<=num; i++) {
+			if (i != 1) {
+				res += " ";
 			}
-			
-//			if (i != num){
-//				result += " ";
-//			}
+			res += obtenerTexto(i);	
 		}
 		
-		return result;
+		return res;
+		
 	}
 	
+	public String obtenerTexto(int num){
+		String pal = "";
+		
+		for (IValidador validador : validadores){
+			if (validador.validar(num)){
+				pal += validador.getOutput();
+			}
+		}
+		
+		if (pal.length() == 0){
+			pal += String.valueOf(num);
+		}
+		
+		
+		return pal;
+	}
 	
-
 }

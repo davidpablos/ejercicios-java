@@ -1,10 +1,15 @@
 package com.davidpablos.validadores;
 
 public class Fizz extends Validador{
-	private String texto = "Fizz";
 
-	@Override
-	public boolean esMultiplo(int num) {
-		return (num % 3 == 0);
+	private static final String msg = "Fizz";
+	
+	public Fizz(){
+		super(msg);
 	}
+	
+	public boolean validar(int num){
+		return num % 3 == 0;
+	}
+	
 }
