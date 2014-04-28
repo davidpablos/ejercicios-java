@@ -1,8 +1,7 @@
 package com.davidpablos.herencia.factories;
 
-import com.davidpablos.herencia.Empleado;
-import com.davidpablos.herencia.Empresa;
-import com.davidpablos.herencia.interfaces.IEmpresa;
+import com.davidpablos.herencia.clases.Empleado;
+import com.davidpablos.herencia.clases.Empresa;
 
 public abstract class Factory {
 	
@@ -10,12 +9,12 @@ public abstract class Factory {
 		return new Empresa(nombre, tamano);
 	}
 	
+//	public static final Empleado getInstanciaEmpleado(IEmpresa empresa, String nombre, int sueldo){
+//		return new Empleado(empresa, nombre, sueldo);
+//	}
+
 	public static final Empleado getInstanciaEmpleado(String nombre, int sueldo){
 		return new Empleado(nombre, sueldo);
 	}
-
-//	public static final Empleado getInstanciaEmpleado(IEmpresa empresa, String nombre, int sueldo, int idEmpleado){
-//		return new Empleado(empresa, nombre, sueldo, idEmpleado);
-//	}
 
 }
