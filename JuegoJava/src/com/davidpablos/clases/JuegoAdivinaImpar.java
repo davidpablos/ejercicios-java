@@ -1,10 +1,12 @@
 package com.davidpablos.clases;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class JuegoAdivinaImpar extends JuegoAdivinaNumero {
 
-	public JuegoAdivinaImpar(int vidas, int numAAdivinar) {
+	public JuegoAdivinaImpar(int vidas) {
 		super(vidas);
 		// TODO Auto-generated constructor stub
 	}
@@ -29,6 +31,13 @@ public class JuegoAdivinaImpar extends JuegoAdivinaNumero {
 	public void muestraInfo() {
 		// TODO Auto-generated method stub
 		System.out.println("Adivina un nœmero impar entre 1 y 10. Tienes " + this.getVidas() + " intentos");
+	}
+	
+	@Override
+	public void reiniciaPartida() {
+		// TODO Auto-generated method stub
+		this.setVidas(this.getVidasIniciales());
+		this.setNumAAdivinar(this.genNumAleatorio());
 	}
 
 }

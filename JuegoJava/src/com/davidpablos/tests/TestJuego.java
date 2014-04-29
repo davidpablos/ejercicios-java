@@ -5,11 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.davidpablos.clases.Application;
-import com.davidpablos.clases.Juego;
 import com.davidpablos.clases.JuegoAdivinaImpar;
 import com.davidpablos.clases.JuegoAdivinaNumero;
 import com.davidpablos.clases.JuegoAdivinaPar;
-import com.davidpablos.factories.Factory;
+import com.davidpablos.excepciones.JuegoException;
 import com.davidpablos.interfaces.IJugable;
 
 public class TestJuego {
@@ -81,11 +80,20 @@ public class TestJuego {
 	@Test
 	public void testJugable() {
 
-		IJugable juego = Application.eligeJuego();
+		IJugable juego;
+		try {
+			juego = Application.eligeJuego();
+			System.out.print("Juego elegido:");
+			juego.muestraNombre();
+			System.out.print("Instrucciones del juego:");
+			juego.muestraInfo();
+			juego.juega();
+		} catch (JuegoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		juego.muestraNombre();
-		juego.muestraInfo();
-		juego.juega();
+
 	}
 
 }

@@ -24,6 +24,10 @@ public abstract class Juego implements IJuego {
 	public int getRecord() {
 		return record;
 	}
+	
+	public int getVidasIniciales() {
+		return this.vidasIniciales;
+	}
 
 	@Override
 	public void muestraVidasRestantes() {

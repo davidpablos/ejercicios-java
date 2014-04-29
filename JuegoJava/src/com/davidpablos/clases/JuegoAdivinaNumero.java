@@ -15,13 +15,23 @@ public class JuegoAdivinaNumero extends Juego implements IJuegoAdivinaNumero, IJ
 	public JuegoAdivinaNumero(int vidas) {
 		super(vidas);
 		// TODO Auto-generated constructor stub
-		random = new Random((new Date()).getTime());
-		this.numAAdivinar = random.nextInt(10);
-		System.out.println(this.numAAdivinar);
+		this.numAAdivinar = genNumAleatorio();
 	}
 	
 	public int getNumAAdivinar() {
 		return this.numAAdivinar;
+	}
+	
+	public Random getRandom() {
+		return this.random;
+	}
+	
+	public void setRandom(Random random) {
+		this.random = random;
+	}
+	
+	public void setNumAAdivinar(int numAAdivinar) {
+		this.numAAdivinar = numAAdivinar;
 	}
 
 	@Override
@@ -69,6 +79,13 @@ public class JuegoAdivinaNumero extends Juego implements IJuegoAdivinaNumero, IJ
 		
 		return result;
 	}
+	
+	@Override
+	public void reiniciaPartida() {
+		// TODO Auto-generated method stub
+		this.setVidas(this.getVidasIniciales());
+		this.numAAdivinar = genNumAleatorio();
+	}
 
 	@Override
 	public void muestraNombre() {
@@ -86,6 +103,16 @@ public class JuegoAdivinaNumero extends Juego implements IJuegoAdivinaNumero, IJ
 	public boolean validaNumero(int numUsuario) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	public int genNumAleatorio() {
+		this.setRandom(new Random((new Date()).getTime()));
+		int aleatorio = this.getRandom().nextInt(10);
+		while(!this.validaNumero(aleatorio)){
+			aleatorio = this.getRandom().nextInt(10);
+		}
+		return aleatorio;
+		
 	}
 
 }

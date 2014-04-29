@@ -1,10 +1,8 @@
 package com.davidpablos.clases;
 
-import java.util.Scanner;
-
 public class JuegoAdivinaPar extends JuegoAdivinaNumero {
 	
-	public JuegoAdivinaPar(int vidas, int numAAdivinar) {
+	public JuegoAdivinaPar(int vidas) {
 		super(vidas);
 		// TODO Auto-generated constructor stub
 	}
@@ -29,6 +27,13 @@ public class JuegoAdivinaPar extends JuegoAdivinaNumero {
 	public void muestraInfo() {
 		// TODO Auto-generated method stub
 		System.out.println("Adivina un nœmero par entre 1 y 10. Tienes " + this.getVidas() + " intentos");
+	}
+	
+	@Override
+	public void reiniciaPartida() {
+		// TODO Auto-generated method stub
+		this.setVidas(this.getVidasIniciales());
+		this.setNumAAdivinar(this.genNumAleatorio());
 	}
 
 }
